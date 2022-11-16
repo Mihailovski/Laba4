@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Laba4.ViewsModels.DepartmentView>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Страница кафедр</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <p>Введите название кафедры: </p>
+        @Html.TextBox("searchDepartmentName")
+        <p>Введите название факультета :</p>
+        @Html.TextBox("searchFacultyName")
+        <p><input type="submit" value="Отправить" /></p>
+    }
+    <table border="1">
+        <caption>Кафедра</caption>
+        <tr>
+            <td>Id</td>
+            <th>
+                <a asp-action="Index" asp-route-sortDepartment="@ViewBag.DepartmentSort">
+                    Название
+                </a>
+            </th>
+            <td>Тип</td>
+            <th>
+                <a asp-action="Index" asp-route-sortDepartment="@ViewBag.FacultySort">
+                    Факультет
+                </a>
+            </th>
+            <td></td>
+        </tr>
+        @foreach (var department in Model)
+        {
+            <tr>
+                <td>@department.Id</td>
+                <td>@department.Name</td>
+                <td>@department.IsReleasing</td>
+                <td>@department.Faculty</td>
+            </tr>
+        }
+    </table>
+
+</body>
+</html>

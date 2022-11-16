@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Laba4.ViewsModels.SpecializationView>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Страница специальностей</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <p>Введите название специальности: </p>
+        @Html.TextBox("searchSpecializationName")
+        <p>Введите название кафедры :</p>
+        @Html.TextBox("searchDepartmentName")
+        <p><input type="submit" value="Отправить" /></p>
+    }
+    <table border="1">
+        <caption>Специальность</caption>
+        <tr>
+            <td>Id</td>
+            <th>
+                <a asp-action="Index" asp-route-sortSpecialization="@ViewBag.SpecializationName">
+                    Название
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortSpecialization="@ViewBag.DepartmentName">
+                    Кафедра
+                </a>
+            </th>
+            <td></td>
+        </tr>
+        @foreach (var specialization in Model)
+        {
+            <tr>
+                <td>@specialization.Id</td>
+                <td>@specialization.Name</td>
+                <td>@specialization.Department</td>
+            </tr>
+        }
+    </table>
+
+</body>
+</html>

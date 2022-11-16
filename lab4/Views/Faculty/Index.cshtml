@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Faculty>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Страница факультетов</title>
+</head>
+<body>
+    <table border="1">
+        <caption>Факультет</caption>
+        <tr>
+            <td>Id</td>
+            <td>Название факультета</td>
+            <td></td>
+        </tr>
+        @foreach (var f in Model)
+        {
+            <tr>
+                <td>@f.Id</td>
+                <td>@f.Name</td>
+            </tr>
+        }
+    </table>
+
+</body>
+</html>
